@@ -1,0 +1,7 @@
+package de.morigm.greenlib.api.enums;
+
+public enum EnumPlayerDigType {
+	
+	ABORT_DESTROY_BLOCK,DROP_ALL_ITEMS,DROP_ITEM,RELEASE_USE_ITEM,START_DESTROY_BLOCK,STOP_DESTROY_BLOCK,SWAP_HELD_ITEMS;
+
+}

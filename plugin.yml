@@ -1,0 +1,12 @@
+name: GreenLib
+author: [MoriGM,DekyKH]
+version: 0.0.0
+description: Protocol and Gui Api
+load: STARTUP 
+
+main: de.morigm.greenlib.Main
+
+commands:
+      greenlib:
+        usuage: /greenlib
+        description: Version of Plugin

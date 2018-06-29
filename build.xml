@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<project name="GreenLib" default="build">
+
+	<!-- Properties -->
+	<property name="bin" value="./bin"/>
+	<property name="src" value="./src"/>
+	<property name="dist" value="./dist"/>
+	<property name="lib" value="./lib"/>
+	<property name="tmp" value="./tmp"/>
+	<property name="homefolder" value="de"/>
+	<property name="file" value="GreenLib.jar"/>
+	<property name="plugin" value="plugin.yml"/>
+	
+	<target name="make-spigot-old">
+		<mkdir dir="${lib}"/>
+		<mkdir dir="${lib}"/>
+		<unzip src="${lib}/spigot-1.12.2.jar" dest="${tmp}"/>
+		<unzip src="${lib}/spigot-1.10.2.jar" dest="${tmp}"/>
+		<unzip src="${lib}/spigot-1.9.4.jar" dest="${tmp}"/>
+		<unzip src="${lib}/spigot-1.9.jar" dest="${tmp}"/>
+		<unzip src="${lib}/spigot-1.8.8.jar" dest="${tmp}"/>
+		<unzip src="${lib}/spigot-1.11.2.jar" dest="${tmp}"/>
+		<zip basedir="${tmp}" destfile="${lib}/spigot-old.zip"/>
+		<delete dir="${tmp}"/>
+	</target>
+	
+	<target name="build">
+		<mkdir dir="${src}"/>
+		<mkdir dir="${bin}"/>
+		<mkdir dir="${dist}"/>
+		<copy todir="${src}/">
+			<fileset dir="${homefolder}"/>
+		</copy>
+		<javac srcdir="${src}" destdir="${bin}">
+			<classpath>
+				<pathelement path="${lib}/spigot-old.zip"/>
+			</classpath>
+		</javac>
+		<copy file="${plugin}" todir="${bin}"/>
+		<jar jarfile="${dist}/${file}">
+			<fileset dir="${bin}"/>
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${src}"/>
+		<delete dir="${bin}"/>
+		<delete dir="${dist}"/>
+		<delete dir="${tmp}"/>
+	</target>
+
+
+</project>
